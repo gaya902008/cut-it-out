@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <h2>Welcome,</h2>
+  <p>please insert a valid URL</p>
+<br>
+  <form class="example-form" pattern="url" [formGroup]="urlFormControl"> 
+    <mat-form-field class="example-full-width">
+      <mat-label></mat-label>
+      <input matInput [formControl]="urlFormControl" placeholder="http://youtube.com/...">
+      <mat-error *ngIf="urlFormControl.hasError('pattern') && !urlFormControl.hasError('required')">
+        Please enter a valid URL
+      </mat-error>
+      <mat-error *ngIf="urlFormControl.hasError('required')">
+        URL is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form> 
+
+  <br>
+
+  <button class="card-container" (click)="submitForm()" [disabled]="urlFormControl.invalid" [routerLink]="'/result'">
+    <a class="card">
+      <i class="material-icons"  width="24" height="24" viewBox="0 0 24 24"></i>
+
+      <span>Cut it Out!</span>
+
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+
+</button>

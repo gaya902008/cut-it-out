@@ -3,10 +3,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "typeRoots": ["./node_modules/@types", "./custom_typings"],
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "allowJs": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,

@@ -11,11 +11,13 @@ declare let YTC: any ;
 export class ResultComponent implements OnInit {
   ;
   url: string
+  result: JSON;
   constructor(private data: DataService, public sanitizer: DomSanitizer) { 
   }
 
   ngOnInit(): void {
     this.url = this.data.url; 
+    
     var options = {
       youtubeId: this.url,
       fluid: true,
@@ -28,7 +30,7 @@ export class ResultComponent implements OnInit {
         wmode: 'transparent',
       },
       showTime: true,
-      chapters: [
+      chapters:  [
         {
           time: '0m 0s',
           title: '01 - Advent Rising - Muse',

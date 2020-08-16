@@ -26,18 +26,18 @@ export class HomeComponent {
     // trimming the youtube starter (http://youtube ...)
     const final = input.substring(input.lastIndexOf("=") + 1,input.length);
     console.log('value sent to server: ', final);
-    this.data.changeURL(final);
-    const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-        'Authorization':'authkey',
-      })
-    };
+     this.data.changeURL(final);
+    // const httpOptions = {
+    //   headers: new HttpHeaders({ 
+    //     'Access-Control-Allow-Origin':'*',
+    //     'Authorization':'authkey',
+    //   })
+    // };
 
-    var partitionObservable = this.httpClient.get(this.API_URL + final, httpOptions)
-    .toPromise()
-    .then(result => {
-     this.data.changeResult(JSON.parse(result.toString()))
-    }) 
+    // var partitionObservable = this.httpClient.get(this.API_URL + final, httpOptions)
+    // .toPromise()
+    // .then(result => {
+    //  this.data.changeResult(result)
+    // }) 
 }
 }

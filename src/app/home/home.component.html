@@ -15,9 +15,9 @@
   <form class="example-form" pattern="url" [formGroup]="urlFormControl"> 
     <mat-form-field class="example-full-width">
       <mat-label></mat-label>
-      <input matInput [formControl]="urlFormControl" placeholder="http://youtube.com/...">
+      <input class="form-input" matInput [formControl]="urlFormControl" placeholder="http://youtube.com/...">
       <mat-error *ngIf="urlFormControl.hasError('pattern') && !urlFormControl.hasError('required')">
-        Please enter a valid URL
+        Please enter a valid youtube URL
       </mat-error>
       <mat-error *ngIf="urlFormControl.hasError('required')">
         URL is <strong>required</strong>

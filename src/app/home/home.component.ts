@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { DataService } from '../data.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent {
   title = 'cut-it-out';
-  urlFormControl = new FormControl('', [    Validators.required]
+  urlFormControl = new FormControl('',[    Validators.required, Validators.pattern("^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+")]
   );
 
-  API_URL: string = "http://127.0.0.1:5000/";
+  API_URL: string = "http://localhost:5000/";
   partition: any;
 
   constructor(private httpClient: HttpClient, private data: DataService) { }
@@ -26,11 +26,18 @@ export class HomeComponent {
     // trimming the youtube starter (http://youtube ...)
     const final = input.substring(input.lastIndexOf("=") + 1,input.length);
     console.log('value sent to server: ', final);
-    this.data.changeURL(final);
-    // var partitionObservable = this.httpClient.get(`${this.API_URL}/${final}`)
+     this.data.changeURL(final);
+    // const httpOptions = {
+    //   headers: new HttpHeaders({ 
+    //     'Access-Control-Allow-Origin':'*',
+    //     'Authorization':'authkey',
+    //   })
+    // };
 
-    // partitionObservable.subscribe(value => this.partition = value);
-    // this.partition = JSON.parse(this.partition);
-
-  }
+    // var partitionObservable = this.httpClient.get(this.API_URL + final, httpOptions)
+    // .toPromise()
+    // .then(result => {
+    //  this.data.changeResult(result)
+    // }) 
+}
 }
